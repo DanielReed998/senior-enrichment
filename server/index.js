@@ -4,6 +4,9 @@ const express = require('express');
 const path = require('path');
 const volleyball = require('volleyball');
 const bodyParser = require('body-parser');
+const db = require('./db');
+
+const PORT = 3500;
 
 const app = express();
 
@@ -28,5 +31,14 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).send(err.message || 'Internal server error');
 });
+
+// app.listen(PORT, (err) => {
+//   if (err) throw err;
+//   console.log(`Server listening on port ${PORT}`);
+//   db.sync()
+//   .then(() => {
+//     console.log('Database has been successfully synced');
+//   })
+// })
 
 module.exports = app;
