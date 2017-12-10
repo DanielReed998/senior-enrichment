@@ -11,14 +11,16 @@ class SingleStudent extends Component {
 
     render() {
         const currentStudent = this.props.currentStudent;
-        const studentCampusId = currentStudent.campusId;
         return (
             <div>
                 <h1>{currentStudent.name}</h1>
                 <h3>School: </h3>
-                <NavLink to={`/campuses/${studentCampusId}`}>
-                    school name here
-                </NavLink>
+                {currentStudent.campus && (
+                    <NavLink to={`/campuses/${currentStudent.campusId}`}>
+                        {currentStudent.campus.name}
+                    </NavLink>
+                    )
+                }
             </div>
         )
     }

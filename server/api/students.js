@@ -14,6 +14,10 @@ router.get('/:id', (req, res, next) => {
     Student.findOne({
         where: {
             id: id
+        },
+        include: {
+            model: Campus,
+            as: 'campus'
         }
     })
     .then(student => {

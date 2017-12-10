@@ -6,9 +6,9 @@ const NavBar = () => {
         <nav className="navbar navbar-default" id="my-nav">
             <div className="nav-container">
                 <div className="navbar-header">
-                    <a className="navbar-brand" href="#">Stuff</a>
+                    <NavLink to={`/`} className="navbar-brand">Home</NavLink>
                 </div>
-                <div className="navbar-buffer"></div>
+                <div className="navbar-buffer" />
                 <div className="navlinks">
                     <NavLink to={`/campuses`}>Campuses</NavLink>
                     <NavLink to={`/students`}>Students</NavLink>
