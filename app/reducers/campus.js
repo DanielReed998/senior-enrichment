@@ -1,15 +1,15 @@
 import axios from 'axios';
 // ACTION-TYPES
 
-const GET_CAMPUS = "GET_CAMPUS"
+const ADD_CAMPUS = "ADD_CAMPUS"
 const GET_CAMPUSES = "GET_CAMPUSES"
 
 
 // ACTION CREATORS
 
-export function createGetCampusAction (campus) {
+export function createAddCampusAction (campus) {
     return {
-        type: GET_CAMPUS,
+        type: ADD_CAMPUS,
         campus
     }
 }
@@ -38,7 +38,7 @@ export function postCampus (campus) {
     return dispatch => {
         return axios.post('/api/campuses', campus)
         .then(res => {
-            dispatch(createGetCampusAction(res.data));
+            dispatch(createAddCampusAction(res.data));
         })
         .then(() => {
             console.log('campus successfully added!')
@@ -54,7 +54,7 @@ export default function reducer (state = [], action) {
     switch (action.type) {
         case GET_CAMPUSES:
             return action.campuses;
-        case GET_CAMPUS:
+        case ADD_CAMPUS:
             return [...state, action.campus];
         default:
             return state;

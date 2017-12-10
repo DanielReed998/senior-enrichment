@@ -22,17 +22,21 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+    console.log('post request made!S')
     Student.create(req.body)
     .then(newStudent => {
-        res.status(201).json(newstudent);
+        res.status(201).json(newStudent);
     })
     .catch(next);
 })
 
 router.put('/:id', (req, res, next) => {
-    req.student.update(req.body)
+    Student.findById(req.params.id)
     .then(student => {
-        res.json(student);
+        student.update(req.body)
+    })
+    .then(() => {
+        res.send('student successfully updated');
     })
     .catch(next);
 })

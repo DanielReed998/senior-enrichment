@@ -34,6 +34,20 @@ export function fetchStudents () {
     }
 }
 
+export function postStudent (student) {
+    return dispatch => {
+        return axios.post('/api/students', student)
+        .then(res => {
+            dispatch(createGetStudentAction(res.data));
+        })
+        .then(() => {
+            console.log('student successfully added!')
+        })
+        .catch(err => console.error(err));
+    }
+}
+
+
 
 // REDUCER
 

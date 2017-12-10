@@ -10,11 +10,21 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:id', (req, res, next) => {
+    console.log('hit campus id route!')
     const id = req.params.id;
-    Campus.findById(id)
+    Campus.findOne({
+        where: {
+            id: id
+        }, 
+        include: {
+            model: Student,
+            as: 'students'
+        }
+    })
     .then(campus => {
         res.json(campus);
     })
+    .catch(err => console.error(err));
 })
 
 router.post('/', (req, res, next) => {

@@ -1,0 +1,31 @@
+#my-nav {
+    display: flex;
+}
+
+#my-footer {}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-header {
+    flex: 0 1 25%;
+}
+
+.navbar-brand {
+    padding-left: 5rem;
+}
+
+.navbar-buffer {
+    flex: 0 2 45%;
+}
+
+.navlinks {
+    flex: 0 1 25%;
+}
+
+.navlinks a {
+    margin-right: 2rem
+}

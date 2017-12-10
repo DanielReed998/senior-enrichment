@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
-import { postCampus } from '../reducers/campus'
+import { postCampus } from '../reducers/campus';
+import { NavLink } from 'react-router-dom';
 
 class AllCampuses extends Component {
 
@@ -21,8 +22,8 @@ class AllCampuses extends Component {
                     {this.props.campuses.map(campus => {
                         return (
                             <li key={campus.id}>
-                                <span>{campus.name}</span>
-                                <button onClick={this.delete}>X</button>
+                                <NavLink to={`/campuses/${campus.id}`}>{campus.name}</NavLink>
+                                <button onClick={this.delete} >X</button>
                             </li>
                         )
                     })}
