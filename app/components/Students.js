@@ -8,17 +8,21 @@ function Students(props) {
 
     return (
         <div className="main container">
-            <ul>
-                {props.students.map(student => {
-                    return (
-                        <li key={student.id}>
-                            <NavLink to={`/students/${student.id}`}>{student.name}</NavLink>
-                            <button value={student.id} onClick={props.handleDelete}>X</button>
-                        </li>
-                    )
-                })}
-            </ul>
-            <form onSubmit={props.handleSubmit}>
+            <div id="student-list">
+                <h2>Students enrolled at MHIAJ</h2>
+                <h4>Select student's to name to go to their profile</h4>
+                <ul>
+                    {props.students.map(student => {
+                        return (
+                            <li key={student.id} className="student-name">
+                                <NavLink to={`/students/${student.id}`}>{student.name}</NavLink>
+                                <button value={student.id} onClick={props.handleDelete} className="delete-button">X</button>
+                            </li>
+                        )
+                    })}
+                </ul>
+            </div>
+            <form onSubmit={props.handleSubmit} id="add-student-form">
                 <label htmlFor="name" data-toggle="collapse" data-target="#add-student">Add a student</label>
                 <div className="container">
                     <div id="add-student" className="form-group collapse">

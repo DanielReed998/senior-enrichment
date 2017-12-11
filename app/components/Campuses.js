@@ -13,7 +13,7 @@ function Campuses (props) {
                         <li key={campus.id}>
                             <NavLink to={`/campuses/${campus.id}`}>{campus.name}</NavLink>
                             <img src={campus.imgUrl} className="campus-image"/>
-                            <button value={campus.id} onClick={props.handleDelete} >X</button>
+                            <button value={campus.id} onClick={props.handleDelete} className="delete-button">X</button>
                         </li>
                     )
                 })}

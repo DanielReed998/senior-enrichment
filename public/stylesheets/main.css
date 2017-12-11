@@ -5,6 +5,41 @@ body {
     background-image: url("https://cdn.spacetelescope.org/archives/images/wallpaper2/heic1509a.jpg")
 }
 
+li {
+    list-style-type: none;
+}
+
+.student-name a {
+    color: black;
+    text-decoration: none;
+}
+
+.student-name a:hover {
+    font-weight: bold;
+}
+
+.delete-button {
+    margin-left: 1rem;
+    font-size: 1rem;
+    opacity: 0.5;
+}
+
+.delete-button:hover {
+    opacity: 1;
+}
+
+#add-student-form {
+    width: 50%;
+}
+
+#add-student-form div {
+    width: 100%;
+}
+
+form label {
+    font-size: large;
+}
+
 #app {
     display: flex;
     flex-direction: column;
