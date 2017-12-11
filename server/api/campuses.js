@@ -10,7 +10,6 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:id', (req, res, next) => {
-    console.log('hit campus id route!')
     const id = req.params.id;
     Campus.findOne({
         where: {
@@ -36,25 +35,25 @@ router.post('/', (req, res, next) => {
 })
 
 router.put('/:id', (req, res, next) => {
-    const campusId = req.params.id;
-    Campus.findById(campusId)
+    Campus.findById(req.params.id)
     .then(campus => {
         campus.update(req.body);
+        return campus;
     })
-    .then(() => {
-        console.log('record successfully updated.')
+    .then(updatedCampus => {
+        res.send(updatedCampus)
     })
     .catch(next);
 })
 
 router.delete('/:id', (req ,res, next) => {
-    const campusId = req.params.id;
-    Campus.findById(campusId)
+    Campus.findById(req.params.id)
     .then(campus => {
         campus.destroy();
+        return campus;
     })
-    .then(() => {
-        console.log('record successfully destroyed.')
+    .then(deletedCampus => {
+        res.json(deletedCampus);
     })
     .catch(next);
 })

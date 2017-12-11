@@ -26,7 +26,6 @@ router.get('/:id', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-    console.log('post request made!S')
     Student.create(req.body)
     .then(newStudent => {
         res.status(201).json(newStudent);
@@ -38,18 +37,47 @@ router.put('/:id', (req, res, next) => {
     Student.findById(req.params.id)
     .then(student => {
         student.update(req.body)
+        return student;
     })
-    .then(() => {
-        res.send('student successfully updated');
+    .then(updatedStudent => {
+        res.send(updatedStudent);
+    })
+    .catch(next);
+})
+
+//for the reEnroll student feature:
+// req should have the student's full name
+// and new campus id on it.
+router.put('/', (req, res, next) => {
+    console.log(req.body.name);
+    Student.findOne({
+        where: {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName
+        }
+    })
+    .then(student => {
+        student.update({
+            campusId: req.body.campusId
+        })
+        return student
+    })
+    .then(updatedStudent => {
+        res.json(updatedStudent);
     })
     .catch(next);
 })
 
 router.delete('/:id', (req ,res, next) => {
-    req.student.destroy()
-    .then(() => {
-        res.send(200);
+    Student.findById(req.params.id)
+    .then(student => {
+        student.destroy();
+        return student;
     })
+    .then(deletedStudent => {
+        res.json(deletedStudent);
+    })
+    .catch(next);
 })
 
 module.exports = router;

@@ -8,9 +8,9 @@ import { fetchCampuses } from './reducers/campus'
 import { fetchStudents } from './reducers/student'
 
 // import Root from './components/Root';
-import AllCampuses from './components/AllCampuses';
+import Campuses from './components/Campuses';
 import SingleCampus from './components/SingleCampus';
-import AllStudents from './components/AllStudents';
+import Students from './components/Students';
 import SingleStudent from './components/SingleStudent';
 import Home from './components/Home'
 import Navbar from './components/Navbar';
@@ -28,9 +28,9 @@ function Main ({ fetchCampusData, fetchStudentData }) {
             <main>
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route exact path="/campuses" component={AllCampuses} onEnter={fetchCampusData()}/>
+                    <Route exact path="/campuses" component={Campuses} onEnter={fetchCampusData()}/>
                     <Route exact path="/campuses/:campusId" component={SingleCampus} />
-                    <Route exact path="/students" component={AllStudents} onEnter={fetchStudentData()}/>
+                    <Route exact path="/students" component={Students} onEnter={fetchStudentData()}/>
                     <Route exact path="/students/:studentId" component={SingleStudent} />                    
                     <Route exact path="/error" component={ErrorPage} />
                     <Redirect to="/error" component={ErrorPage} />
